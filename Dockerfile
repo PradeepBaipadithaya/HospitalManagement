@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8080
-ADD target/devops-integration.jar devops-integration.jar
-ENTRYPOINT ["java","-jar","/devops-integration.jar"]
+ADD target/HospitalManagement.jar HospitalManagement.jar
+ENTRYPOINT ["java","-jar","/HospitalManagement.jar"]
