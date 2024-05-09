@@ -14,8 +14,6 @@ RUN mvn dependency:go-offline
 COPY . .
 RUN mvn clean package -DskipTests=true
 
-# Use a lightweight base image for the runtime environment
-FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Set the working directory in the container
 WORKDIR /app
