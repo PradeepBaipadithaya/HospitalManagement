@@ -10,8 +10,7 @@ COPY . .
 # Build the application using Maven
 RUN mvn clean package -DskipTests
 
-# Use a smaller base image for the runtime environment
-FROM adoptopenjdk/openjdk11:alpine-jre
+
 
 # Set the working directory in the container
 WORKDIR /app
