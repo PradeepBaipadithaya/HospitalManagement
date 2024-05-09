@@ -4,11 +4,18 @@ FROM maven:3.8.4-openjdk-11 AS build
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the project files into the container
-COPY . .
+# Copy only the pom.xml to resolve dependencies
+COPY pom.xml .
 
-# Build the application using Maven
-RUN mvn clean install -DskipTests=true
+# Resolve dependencies
+RUN mvn dependency:go-offline
+
+# Copy the entire project and build the application
+COPY . .
+RUN mvn clean package -DskipTests=true
+
+# Use a lightweight base image for the runtime environment
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Set the working directory in the container
 WORKDIR /app
