@@ -15,14 +15,12 @@ COPY . .
 RUN mvn clean package -DskipTests=true
 
 
-# Set the working directory in the container
-WORKDIR /app
 
 # Copy the compiled JAR file from the build stage to the runtime image
 COPY --from=build /app/target/HospitalManagement.war .
 
 # Expose the port that your Spring Boot application listens on
-EXPOSE 8080
+EXPOSE 8030
 
 # Specify the command to run your Spring Boot application
-CMD ["java", "-jar", "HospitalManagement.war"]
+CMD ["java", "-war", "HospitalManagement.war"]
