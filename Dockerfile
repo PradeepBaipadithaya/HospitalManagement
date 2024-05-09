@@ -7,10 +7,6 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
-# Build the application using Maven
-RUN mvn clean package -DskipTests
-
-
 
 # Set the working directory in the container
 WORKDIR /app
