@@ -7,10 +7,6 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
-
-# Set the working directory in the container
-WORKDIR /app
-
 # Copy the compiled JAR file from the build stage to the runtime image
 COPY --from=build /app/target/HospitalManagement.jar .
 
